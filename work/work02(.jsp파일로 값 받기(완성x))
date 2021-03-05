@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>송부 정보의 입력</h1>
+이름:<input class="name" type="text" size="10">
+<br><br>
+우편번호:<input type="text" class="postNum" size="5">-<input type="text" size="5">
+<button type="button">주소변환</button>
+<br><br>
+주소:<input type="text" class="adress" width="100px", height="50px">
+<br><br>
+전화번호:<input type="text" class="phone" size="5">-<input type="text" size="5">-<input type="text" size="5">
+<br><br>
+배달시간:<select>
+			<option>지정하지않음</option>
+			<option>10:00~11:00</option>
+			<option>12:00~13:00</option>
+			<option>15:00~16:00</option>
+			<option>17:00~18:00</option>		
+		</select> 
+<br><br>
+영수증 요청:<input type="checkbox">
+<br><br>
+메일 매거진을 수신:<input type="radio" name="mail" value="신청" checked="checked">신청
+				<input type="radio" name="mail" value="신청하지않음">신청하지 않음
+<br><br>
+<button type="button" class="cls">확인 화면으로 이동</button>
+
+<script type="text/javascript">
+$(document).ready(function name() {
+	
+	$("button.cls").click(function() {
+		$("input").attr("href", "NewFile.jsp");
+	});
+});		
+		
+</script> 
+</body>
+</html>
