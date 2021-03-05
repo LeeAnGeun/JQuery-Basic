@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+<body>
+
+<p id="demo">p tag id demo</p>
+
+<button type="button" id="btnId" >버튼</button>
+
+<script src="./JQuery/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function () {
+	// java script에서 onclick의 역할
+	/* 
+	$("button").click(function () {
+		alert('click');
+	});
+	 */
+	 
+	/* 
+	 $("#btnId").click(function() {
+	 	alert('btnId click');
+	 });
+	 */
+	 
+	/*  
+	 $('#btnId').on("click" , function() { 
+		 alert('btnId on click');
+	 });
+	  */
+	 
+	  // jquery와 java script를 같이 사용한 경우
+	  $("#btnId").on("click", btnClick);
+});
+
+function btnClick() {
+	alert("btnClick 호출");
+}
+</script>
+
+</body>
+</html>
