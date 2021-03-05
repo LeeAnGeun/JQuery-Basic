@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+
+<p>배우 송강의 이름을 알리게 된 작품 좋아하면 울리는이 3월 12일 시즌2로 돌아온다.</p>
+<p>드라마 불가살은 600년간 죽음과 환생을 반복하고 전생을 기억하는 여자와 요괴 불가살이 되어 죽지 못하는 남자의 이야기를 담은 작품이다.</p>
+
+<ol>
+	<li>사과</li>
+	<li>배</li>
+	<li>바나나</li>
+</ol>
+
+<select id="food">
+	<option>햄버거</option>
+	<option>피자</option>
+	<option>치킨</option>
+	
+</select>
+
+<button type="button" id="append">추가(뒤)</button>
+<button type="button" id="prepend">추가(앞)</button>
+
+<script type="text/javascript">
+$(function () {
+	$("#append").click(function() {
+		
+	//	$("p").append("<br>append 추가 요소입니다");
+	
+	//	$("ol").append( "<li>포도</li> ");
+	
+		$("#food").append( "<option>핫바</option>");
+	});
+	
+	$("#prepend").click(function() {
+		
+	//	$("p").prepend("prepend 추가 요소입니다.<br>")
+	
+	//	$("ol").prepend( "<li>딸기</li>");
+	
+		$("#food").prepend( "<option>핫바</option>");
+	});
+});
+
+</script>
+
+</body>
+</html>
