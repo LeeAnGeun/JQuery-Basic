@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="./JQuery/jquery.min.js"></script>
+
+</head>
+<body>
+
+입력:<input type="text" id="text" value="">
+<br>
+<input type="button" id="btn" value="버튼">
+
+<script type="text/javascript">
+$(document).ready(function () {
+	
+	$("#btn").click(function () {
+	//	alert('click');
+	
+		// getter
+		var value = $("#text").val();  // value값을 가져옴
+		alert(value);
+		
+		// setter
+		$("#text").val( "hi hello" );
+	});
+});
+
+</script>
+
+
+<!-- this -->
+
+<!-- java script -->
+<!--
+<p onclick="func(0)">p tag 1</p>
+
+<p onclick="func(1)">p tag 2</p>
+
+<p onclick="func(2)">p tag 3</p>
+
+<script type="text/javascript">
+function func(n) {
+	let arrP = document.getElementsByTagName("p");
+	arrP[n].style.backgroundColor = "#ff0000";	
+}
+</script>
+ -->
+ 
+<p>p tag 1</p>
+
+<p>p tag 2</p>
+
+<p>p tag 3</p>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	
+	$("p").click(function() {
+	//	$(this).css("background", "#0000ff"); // this 선택한 현재 값을 가져옴		
+		$(this).hide(); // hide() <-> show()
+		// css( property명 ,  값 ) setter	, css(property명) getter
+	});
+	
+});
+
+</script>
+</body>
+</html>
