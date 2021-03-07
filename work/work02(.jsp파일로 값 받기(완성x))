@@ -3,41 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 </head>
 <body>
 <h1>송부 정보의 입력</h1>
-이름:<input class="name" type="text" size="10">
-<br><br>
-우편번호:<input type="text" class="postNum" size="5">-<input type="text" size="5">
-<button type="button">주소변환</button>
-<br><br>
-주소:<input type="text" class="adress" width="100px", height="50px">
-<br><br>
-전화번호:<input type="text" class="phone" size="5">-<input type="text" size="5">-<input type="text" size="5">
-<br><br>
-배달시간:<select>
-			<option>지정하지않음</option>
-			<option>10:00~11:00</option>
-			<option>12:00~13:00</option>
-			<option>15:00~16:00</option>
-			<option>17:00~18:00</option>		
-		</select> 
-<br><br>
-영수증 요청:<input type="checkbox">
-<br><br>
-메일 매거진을 수신:<input type="radio" name="mail" value="신청" checked="checked">신청
-				<input type="radio" name="mail" value="신청하지않음">신청하지 않음
-<br><br>
-<button type="button" class="cls">확인 화면으로 이동</button>
+<form action="work02.jsp">
+	이름:<input name="name" type="text" size="10">
+	<br><br>
+	
+	우편번호:<input type="text" name="postNum1" size="5">-<input type="text" name="postNum2" size="5">
+	<button type="button">주소변환</button>
+	<br><br>
+	
+	주소:<textarea type="text" name="adress" ></textarea>
+	<br><br>
+	
+	전화번호:<input type="text" name="phone1" size="5">-<input name="phone2" type="text" size="5">-<input name="phone3" type="text" size="5">
+	<br><br>
+	
+	배달시간:<select name="time">
+				<option value="지정하지않음">지정하지않음</option>
+				<option value="10:00~11:00">10:00~11:00</option>
+				<option value="12:00~13:00">12:00~13:00</option>
+				<option value="15:00~16:00">15:00~16:00</option>
+				<option value="17:00~18:00">17:00~18:00</option>		
+			</select> 
+	<br><br>
+	
+	영수증 요청:<input type="checkbox" name="request" value="요청">
+	<br><br>
+	
+	메일 매거진을 수신:<input type="radio" name="mail" value="신청" checked="checked">신청
+					<input type="radio" name="mail" value="신청하지않음">신청하지 않음
+	<br><br>
+		
+	<button type="button" class="cls">확인 화면으로 이동</button>
+</form>
 
 <script type="text/javascript">
 $(document).ready(function name() {
 	
 	$("button.cls").click(function() {
-		$("input").attr("href", "NewFile.jsp");
+		// 이름
+		let name = $("input[name=name]").val();
+		
+		// 우편번호
+		let postNum1 = $("input[name=postNum1]").val();
+		let postNum2 = $("input[name=postNum2]").val();
+		
+		// 주소
+		let adress = $("textarea[name=adress]").val();
+		
+		// 전화번호
+		let phone1 = $("input[name=phone1]").val();
+		let phone2 = $("input[name=phone2]").val();
+		let phone3 = $("input[name=phone3]").val();
+		
+		// 배달시간
+		let time = $("select[name=time]").val();
+		
+		// 영수증 요청
+		let request = "";
+		if( $("input[name=request]").is(":checked") ){
+			request = request + "요청";
+		}else{
+			request = request + "요청x";
+		}
+		alert(request);
+		
+		// 메일 매거진을 수신
+		let mail = $(":input[name=mail]:checked").val();
+		
+		location.href = "work02.jsp?name=" + name + "&postNum1=" + postNum1 + "&postNum2=" + postNum2 +
+				"&adress=" + adress + "&phone1=" + phone1 + "&phone2=" + phone2 + "&phone3=" + phone3 +
+				"&time=" + time + "&request=" + request + "&mail=" + mail;
 	});
 });		
 		
 </script> 
+</body>
+</html>
+
+
+
+
+<!-- work02.jsp -->
+
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h3>여기는 work02.jsp 입니다.</h3>
+
+<%
+	/* 이름 */
+	String name = request.getParameter("name");	
+	out.println("이름 : " + name + "<br>"); // 웹에 표현
+	
+	/* 우편번호 */
+	String post1 = request.getParameter("postNum1");	
+	String post2 = request.getParameter("postNum2");	
+	out.println("우편번호 : " + post1 + "-" + post2 + "<br>"); // 웹에 표현
+	
+	/* 주소 */
+	String adress = request.getParameter("adress");	
+	out.println("주소 : " + adress + "<br>");
+	
+	/* 전화번호 */
+	String phone1 = request.getParameter("phone1");	
+	String phone2 = request.getParameter("phone2");	
+	String phone3 = request.getParameter("phone3");	
+	out.println("전화번호 : " + phone1 + "-" + phone2 + "-" + phone3 + "<br>");
+	
+	/* 배달시간 */
+	String time = request.getParameter("time");	
+	out.println("배달시간 : " + time + "<br>");
+	
+	/* 영수증 요청 */
+	String request1 = request.getParameter("request");	
+	out.println("영수증 요청 : " + request1 + "<br>");
+	
+	/* 메일 수신 */
+	String mail = request.getParameter("mail");
+	out.println("메일 매거진을 수신 : " + mail);
+%>
+
 </body>
 </html>
