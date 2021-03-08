@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+<h1>송부 정보의 입력</h1>
+<form id="sendFrm">
+	이름:&nbsp;&nbsp;&nbsp;&nbsp;<input name="name" type="text" size="10"> <!-- &nbsp; : 여백 -->
+	<br><br>
+	
+	우편번호:<input type="text" name="postNum1" size="5">-<input type="text" name="postNum2" size="5">
+	<button type="button">주소변환</button>
+	<br><br>
+	
+	주소:<textarea rows="2" cols="50" name="adress" ></textarea>
+	<br><br>
+	
+	전화번호:<input type="text" name="phone1" size="5" max>-<input name="phone2" type="text" size="5">-<input name="phone3" type="text" size="5">
+	<br><br>
+	
+	배달시간:<select name="time">
+				<option value="지정하지않음">지정하지않음</option>
+				<option value="10:00~11:00">10:00~11:00</option>
+				<option value="12:00~13:00">12:00~13:00</option>
+				<option value="15:00~16:00">15:00~16:00</option>
+				<option value="17:00~18:00">17:00~18:00</option>		
+			</select> 
+	<br><br>
+	
+	영수증 요청:<input type="checkbox" name="request" value="요청">
+	<br><br>
+	
+	메일 매거진을 수신:<input type="radio" name="mail" value="신청" checked="checked">신청
+					<input type="radio" name="mail" value="신청하지않음">신청하지 않음
+	<br><br>
+		
+	<button type="button" class="cls">확인 화면으로 이동</button>
+</form>
+
+<script type="text/javascript">
+$(document).ready(function name() {
+	
+	$("*").focus(function(){  // * 는 모든 리소스를 뜻한다
+		$(this).css("background-color", "green");
+		
+	});
+	
+	$("*").blur(function(){  // * 는 모든 리소스를 뜻한다
+		$(this).css("background-color", "#ffffff");
+	});
+	
+	$("button.cls").click(function() {
+		if( $("input[name=name]").val() == ""){
+			alert("이름을 기입해 주십시오");
+		}else{
+		/* 
+		// 이름
+		let name = $("input[name=name]").val();
+		
+		// 우편번호
+		let postNum1 = $("input[name=postNum1]").val();
+		let postNum2 = $("input[name=postNum2]").val();
+		
+		// 주소
+		let adress = $("textarea[name=adress]").val();
+		
+		// 전화번호
+		let phone1 = $("input[name=phone1]").val();
+		let phone2 = $("input[name=phone2]").val();
+		let phone3 = $("input[name=phone3]").val();
+		
+		// 배달시간
+		let time = $("select[name=time]").val();
+		
+		// 영수증 요청
+		let request = "";
+		if( $("input[name=request]").is(":checked") ){
+			request = request + "요청";
+		}else{
+			request = request + "요청x";
+		} 
+		
+		
+		
+		// 메일 매거진을 수신
+		let mail = $(":input[name=mail]:checked").val();
+		
+		
+		// 빈칸 체크
+			location.href = "NewFile.jsp?name=" + name + "&postNum1=" + postNum1 + "&postNum2=" + postNum2 +
+			"&adress=" + adress + "&phone1=" + phone1 + "&phone2=" + phone2 + "&phone3=" + phone3 +
+			"&time=" + time + "&request=" + request + "&mail=" + mail;
+		 */
+		
+		/* JQuery에서는 위에 코드를 밑에 코드로 줄일 수 있다. */
+		$("#sendFrm").attr("action", "NewFile.jsp");
+		$("#sendFrm").attr("target", "_blank"); // 새로운 창을 열때
+		$("#sendFrm").submit();
+		
+		}
+	});
+});		
+		
+</script> 
+</body>
+</html>
