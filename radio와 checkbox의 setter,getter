@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+<!-- radio -->
+<ul>
+	<li><input type="radio" name="radio_test" value="사과" checked>사과</li>
+	<li><input type="radio" name="radio_test" value="배">배</li>
+	<li><input type="radio" name="radio_test" value="바나나">바나나</li>
+</ul>
+
+<button type="button" id="choice">선택</button>
+
+<script type="text/javascript">
+$(document).ready(function () {
+	
+	$("#choice").click(function () {
+		// getter
+		var radioVal = $("input[name='radio_test']:checked").val(); // check 되어있는 radio의 value 값을 가져온다.
+	//	alert(radioVal);
+		
+		// setter
+		$("input[name='radio_test']").val(["바나나"]);
+	});
+});
+</script>
+<br><br>
+
+<!-- checkbox -->
+<input type="checkbox" id="ch">그림 그리기
+<br><br>
+<button type="button" id="btn">체크</button>
+
+<script type="text/javascript">
+$(function () {
+	
+	$("#btn").click(function() {
+		
+		// getter
+	//	let check = $("#ch").is(":checked"); // 체크의 유무 판단 
+	//	let check = $("input:checkbox[id='ch']").is(":checked"); // 다른 방식
+		
+	//	alert("check : " + check);
+			
+		// setter
+		$("#ch").prop("checked", true);
+	});
+});
+</script>
+
+</body>
+</html>
